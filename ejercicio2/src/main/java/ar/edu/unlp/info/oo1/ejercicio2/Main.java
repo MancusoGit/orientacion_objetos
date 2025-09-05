@@ -1,4 +1,4 @@
-package ar.edu.unlp.info.oo1;
+package ar.edu.unlp.info.oo1.ejercicio2;
 
 public class Main {
     public static void main(String[] args) {
