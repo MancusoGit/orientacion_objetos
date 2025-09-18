@@ -9,6 +9,12 @@ public class WallPost {
 	private int likes;
 	private boolean featured;
 
+	public WallPost() {
+		this.text = "Undefined post";
+		this.likes = 0;
+		this.featured = false;
+	}
+
 	/**
 	 * Retorna el texto descriptivo de la publicación
 	 * 

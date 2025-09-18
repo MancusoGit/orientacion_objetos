@@ -28,7 +28,7 @@ class WallPostTest {
 
 	@Test
 	void testCreation() {
-		assertEquals(null, wallPost.getText());
+		assertEquals("Undefined post", wallPost.getText());
 		assertEquals(0, wallPost.getLikes());
 		assertEquals(false, wallPost.isFeatured());
 	}
