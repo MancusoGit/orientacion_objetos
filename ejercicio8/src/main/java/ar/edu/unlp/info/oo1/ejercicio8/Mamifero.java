@@ -10,13 +10,6 @@ public class Mamifero {
     private Mamifero padre;
     private Mamifero madre;
 
-    /* 
-    private Mamifero abueloMaterno;
-    private Mamifero abuelaMaterna;
-    private Mamifero abueloPaterno;
-    private Mamifero abuelaPaterna;
-    */
-
     public Mamifero() {
 
     }
@@ -68,7 +61,6 @@ public class Mamifero {
     public void setMadre(Mamifero mum) {
         this.madre = mum;
     }
-    
 
     private boolean hasFather() {
         return this.getPadre() != null;
@@ -98,30 +90,13 @@ public class Mamifero {
         boolean ok = false;
         //solucion recursiva preguntando por el padre y la madre si coinciden con el mamifero
         if (pariente != null) {
-            String ancestro = pariente.getIdentificador();
-            ok = buscarAncestro(ancestro);
+            ok = buscarAncestro(pariente);
         }
         return ok;
     }
 
-    private boolean buscarAncestro(String ancestro) {
-        boolean ok = false;
-        if (this.hasFather()) {
-            Mamifero dad = this.getPadre();
-            if (dad.getIdentificador().equals(ancestro)) {
-                ok = true;
-            } else if (dad.hasFather() || dad.hasMother()) {
-                ok = dad.buscarAncestro(ancestro);
-            }
-        }
-        if (this.hasMother() && !ok) {
-            Mamifero mum = this.getMadre();
-            if (mum.getIdentificador().equals(ancestro)) {
-                ok = true;
-            } else if (mum.hasFather() || mum.hasMother()) {
-                ok = mum.buscarAncestro(ancestro);
-            }
-        }
-        return ok;
+    private boolean buscarAncestro(Mamifero ancestro) {
+        return this.hasFather() && (this.getPadre().equals(ancestro) || this.getPadre().buscarAncestroLinea(ancestro)) ||
+                this.hasMother() && (this.getMadre().equals(ancestro) || this.getMadre().buscarAncestroLinea(ancestro));
     }
 }

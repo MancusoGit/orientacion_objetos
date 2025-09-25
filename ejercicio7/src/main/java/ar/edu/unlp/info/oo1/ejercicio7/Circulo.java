@@ -2,6 +2,7 @@ package ar.edu.unlp.info.oo1.ejercicio7;
 
 public class Circulo extends Figura {
 
+    private double radio;
     private final double PI = Math.PI; 
     private double diametro;
 
@@ -10,21 +11,21 @@ public class Circulo extends Figura {
     }
 
     public Circulo(double radius) {
-        super(radius);
+        this.setRadio(radius);
     }
 
     public void setRadio(double r) {
-        super.setLinea(r);
+        this.radio = r;
         this.diametro = r * 2;
     }
 
     public double getRadio() {
-        return super.getLinea();
+        return this.radio;
     }
 
     public void setDiametro(double d) {
         this.diametro = d;
-        super.setLinea(d / 2);
+        this.setRadio(d / 2);
     }
 
     public double getDiametro() {

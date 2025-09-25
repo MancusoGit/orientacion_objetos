@@ -2,27 +2,29 @@ package ar.edu.unlp.info.oo1.ejercicio7;
 
 public class Cuadrado extends Figura {
 
+    private double lado;
+
     private final double caras = 4;
 
     public Cuadrado() {
-        super();
+        
     }
 
     public Cuadrado(double side) {
-        super(side);
+        this.setLado(side);
     }
 
     public void setLado(double l) {
-        super.setLinea(l);
+        this.lado = l;
     }
 
     public double getLado() {
-        return super.getLinea();
+        return this.lado;
     }
 
     @Override
     public double getPerimetro() {
-        return super.getLinea() * caras;
+        return this.getLado() * caras;
     }
 
     @Override
