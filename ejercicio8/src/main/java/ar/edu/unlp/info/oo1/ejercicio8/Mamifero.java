@@ -97,6 +97,6 @@ public class Mamifero {
 
     private boolean buscarAncestro(Mamifero ancestro) {
         return this.hasFather() && (this.getPadre().equals(ancestro) || this.getPadre().buscarAncestroLinea(ancestro)) ||
-                this.hasMother() && (this.getMadre().equals(ancestro) || this.getMadre().buscarAncestroLinea(ancestro));
+            this.hasMother() && (this.getMadre().equals(ancestro) || this.getMadre().buscarAncestroLinea(ancestro));
     }
 }
