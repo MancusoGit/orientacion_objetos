@@ -5,11 +5,13 @@ import java.util.*;
 public class Email {
     private String titulo;
     private String cuerpo;
+    private String carpetaContenido;
     private List<Archivo> archivos;
 
     public Email() {
         this.setTitulo("");
         this.setCuerpo("");
+        this.setCarpetaContenido("");
         this.archivos = new LinkedList<>();
     }
 
@@ -35,6 +37,14 @@ public class Email {
         this.cuerpo = body;
     }
 
+    public String getCarpetaContenido() {
+        return this.carpetaContenido;
+    }
+
+    void setCarpetaContenido(String folder) {
+        this.carpetaContenido = folder;
+    }
+
     public List<Archivo> adjuntos() {
         //consultar si son los archivos o una copia de los mismos
         return this.archivos != null ? new ArrayList<>(this.archivos) : null;
@@ -44,7 +54,11 @@ public class Email {
         this.archivos.add(file);
     }
 
-    public double getSize() {
+    public int getSize() {
         return this.getTitulo().length() + this.getCuerpo().length() + this.adjuntos().stream().mapToInt(archivo -> archivo.getTamaño()).sum();
+    }
+
+    public boolean buscar(String cadena) {
+        return this.getTitulo().contains(cadena) || this.getCuerpo().contains(cadena);
     }
 }

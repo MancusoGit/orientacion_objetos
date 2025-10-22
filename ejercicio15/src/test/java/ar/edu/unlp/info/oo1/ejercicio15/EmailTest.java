@@ -19,9 +19,22 @@ public class EmailTest {
 
     @Test
     void testAdjuntos() {
+        Archivo arch2 = new Archivo();
         assertEquals(emailVacio.adjuntos(), null);
         assertNotEquals(emailContenido.adjuntos(), null);
         assertTrue(emailContenido.adjuntos().contains(archivo1));
+        assertFalse(emailVacio.adjuntos().contains(arch2));
     }
 
+    @Test
+    void testAgregarArchivo() {
+        Archivo test = new Archivo();
+        emailContenido.agregarArchivo(test);
+        assertTrue(emailContenido.adjuntos().contains(test));
+    }
+
+    @Test
+    void testSize() {
+        
+    }
 }

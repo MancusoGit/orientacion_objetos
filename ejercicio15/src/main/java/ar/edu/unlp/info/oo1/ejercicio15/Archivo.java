@@ -21,4 +21,8 @@ public class Archivo {
     public int getTamaño() {
         return this.size;
     }
+
+    public void setTamaño(int tamaño) {
+        this.size = tamaño;
+    }
 }

@@ -28,6 +28,7 @@ public class Carpeta {
 
     public void agregarEmail(Email correo) {
         this.emails.add(correo);
+        correo.setCarpetaContenido(this.getNombre());
     }
 
     public void mover(Email correo, Carpeta destino) {
@@ -37,14 +38,12 @@ public class Carpeta {
         }
     }
 
-    public double calcularTamaño() {
-        return this.emails.stream().mapToDouble(mail -> mail.getSize()).sum();
+    public int calcularTamaño() {
+        return this.emails.stream().mapToInt(mail -> mail.getSize()).sum();
     }
 
     public Email search(String fragmento) {
-        return this.emails.stream().filter(mail -> mail.getTitulo().startsWith(fragmento) || mail.getCuerpo().startsWith(fragmento)).findFirst().orElse(null);
+        return this.emails.stream().filter(mail -> mail.buscar(fragmento)).findFirst().orElse(null);
     }
-
-    
 
 }

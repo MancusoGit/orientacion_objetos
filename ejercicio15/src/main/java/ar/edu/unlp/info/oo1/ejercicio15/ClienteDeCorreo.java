@@ -7,9 +7,13 @@ public class ClienteDeCorreo {
     private List<Carpeta> carpetas;
 
     public ClienteDeCorreo() {
-        inbox = new Carpeta();
+        inbox = new Carpeta("inbox");
         this.carpetas = new LinkedList<>();
         carpetas.add(inbox);
+    }
+    
+    public String getInboxName() {
+        return this.inbox.getNombre();
     }
 
     public void crearCarpeta(String name) {
@@ -20,12 +24,12 @@ public class ClienteDeCorreo {
         this.inbox.agregarEmail(email);
     }
 
-    public double espacioOcupado() {
+    public int espacioOcupado() {
         return this.carpetas.stream()
-        .mapToDouble(folder -> folder.calcularTamaño())
+        .mapToInt(folder -> folder.calcularTamaño())
         .sum();
     }
-
+    
     public Email buscar(String texto) {
         return this.carpetas.stream()
                 .map(carpeta -> carpeta.search(texto))
