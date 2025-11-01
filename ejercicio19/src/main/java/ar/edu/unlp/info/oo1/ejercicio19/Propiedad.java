@@ -76,5 +76,12 @@ public class Propiedad {
         Reserva consulta = buscarReserva(periodo, nombreCliente);
         return consulta != null ? consulta.calcularPrecio(this.precioPorNoche) : 0;
     }
+
+    public double calcularIngresos(DateLapse periodo) {
+        return this.reservas.stream()
+        .filter(reserva -> reserva.getPeriodo().overlaps(periodo))
+        .mapToDouble(reserva -> reserva.calcularPrecio(precioPorNoche))
+        .sum();
+    }
     
 }
