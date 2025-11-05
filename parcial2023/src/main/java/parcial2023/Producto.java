@@ -36,7 +36,7 @@ public abstract class Producto {
     }
 
     public double calcularTotal(int cantidad) {
-        return this.getCostoUnitario() + this.calcularImpuesto(cantidad);
+        return (this.getCostoUnitario() + this.calcularImpuesto(cantidad)) * cantidad;
     }
 
     public abstract double calcularImpuesto(int cantidad);

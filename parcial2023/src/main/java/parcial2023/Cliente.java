@@ -35,6 +35,28 @@ public class Cliente {
         return this.fechaAlta;
     }
 
+    private Pedido buscarPedido(Pedido pedidoSearch) {
+        return this.pedidos.stream()
+                .filter(pedido -> pedido.equals(pedidoSearch))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public void nuevoPedido() {
+        this.pedidos.add(new Pedido());
+    }
+
+    public void nuevoPedido(Pedido pedido) {
+        this.pedidos.add(pedido);
+    }
+
+    public void agregarProducto(Pedido pedido, Producto product, int cantidad) {
+        Pedido consulta = buscarPedido(pedido);
+        if (consulta != null) {
+            consulta.agregarProducto(product, cantidad);
+        }
+    }
+
     public double calcularTotalProducto(Producto product) {
         return this.pedidos.stream()
                 .mapToDouble(pedido -> pedido.getCantidadProducto(product))

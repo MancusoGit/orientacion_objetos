@@ -17,7 +17,14 @@ public class Distribuidora {
 
     public void agregarProducto(Producto producto) {
         this.productos.add(producto);
-    } 
+    }
+
+    public void nuevoPedidoCliente(Cliente cliente) {
+        Cliente consulta = buscarCliente(cliente);
+        if (consulta != null) {
+            consulta.nuevoPedido();
+        }
+    }
 
     public double calcularTotalProducto(Producto product) {
         return this.clientes.stream()
