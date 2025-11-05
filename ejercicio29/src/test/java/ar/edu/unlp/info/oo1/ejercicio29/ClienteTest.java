@@ -24,7 +24,7 @@ public class ClienteTest {
     }
 
     @Test
-    void testCalcularIpDetectadas() {
+    void testCalcularIpDetectadas() { //calcularIp no incluye la ip del cliente actual
         assertEquals(1, clienteIndividual.calcularIpDetectadas());
         assertEquals(0, clienteGrupal.calcularIpDetectadas());
     }
